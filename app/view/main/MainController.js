@@ -6,8 +6,7 @@ Ext.define("Techno.view.main.MainController", {
   extend: "Ext.app.ViewController",
 
   alias: "controller.main",
-
-  requires: ["Techno.view.Login"],
+ 
 
   init: function () {
     const firebaseConfig = {
@@ -20,13 +19,21 @@ Ext.define("Techno.view.main.MainController", {
       measurementId: "G-V4QXE874ZG",
     };
     firebase.initializeApp(firebaseConfig);
- 
+
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-       
-      } else { 
+      } else {
         Ext.create("Techno.view.Login").show();
       }
+    });
+
+    let myStore = Ext.data.StoreManager.get("mydatastore");
+
+    myStore.load(); // Load data from the database
+
+    myStore.on("datachanged", function () {
+      // Handle data changes, e.g., update UI
+      console.log("Store data changed:", myStore.getData().getAt(0));
     });
   },
 
