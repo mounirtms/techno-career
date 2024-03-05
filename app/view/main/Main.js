@@ -7,50 +7,44 @@ Ext.define('Techno.view.main.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'app-main',
 
-    requires: [
-        'Ext.MessageBox',
-        'Ext.layout.Fit'
-    ],
-
+    requires: ['Ext.MessageBox', 'Ext.layout.Fit'],
     controller: 'main',
     viewModel: 'main',
-
+    bind: {
+        hidden: '{!isLoggedIn}'
+    },
     defaults: {
         tab: {
             iconAlign: 'top'
         }
     },
-
-    tabBarPosition: 'bottom',
-
     items: [
-        // TODO - Replace the content of this view to suit the needs of your application.
         {
             title: 'Home',
             iconCls: 'x-fa fa-home',
             layout: 'fit',
-            // The following grid shares a store with the classic version's grid as well!
-            items: [{
-                xtype: 'mainlist'
-            }]
-        },{
-            title: 'Users',
-            iconCls: 'x-fa fa-user',
-            bind: {
-                html: '{loremIpsum}'
-            }
-        },{
-            title: 'Groups',
-            iconCls: 'x-fa fa-users',
-            bind: {
-                html: '{loremIpsum}'
-            }
-        },{
-            title: 'Settings',
-            iconCls: 'x-fa fa-cog',
-            bind: {
-                html: '{loremIpsum}'
+            items: {xtype: 'mainlist'}
+        }
+    ],
+
+    tabBarPosition: 'bottom',
+    listeners: {
+        beforeshow: function(sender, eOpts) {
+            let me = this,
+                vm = me.getViewModel(),
+                runningSession = vm.get('running');
+
+            if (!runningSession) {
+                vm.set('running', 1);
+                firebase.auth().onAuthStateChanged((user) => {
+                    if (user) {
+                        vm.set('isLoggedIn', true);
+                    }
+                    else {
+                        Ext.create('Techno.view.Login').show();
+                    }
+                });
             }
         }
-    ]
+    }
 });

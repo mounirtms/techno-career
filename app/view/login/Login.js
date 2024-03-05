@@ -1,30 +1,67 @@
 Ext.define("Techno.view.Login", {
-  extend: "Ext.form.Panel",
+  extend: "Ext.window.Window",
 
   controller: "login",
+  viewModel: "main",
+  modal: true,
+  closable: false, // Prevent closing by default
+  width: 400,
+  height: 500,
 
-  title: "Login",
-  bodyPadding: 10,
+  layout: {
+    type: "vbox",
+    align: "center",
+    pack: "center",
+  },
 
-  buttons: [
+  items: [
+    {
+      xtype: "image",
+      width: 350,
+      height: 80,
+      src: "resources/logo_techno.png",
+    },
+    {
+      xtype: "formpanel",
+      defaults: {
+        margin: "10 0",
+        width: 350,
+      },
+      items: [
+        {
+          xtype: "emailfield",
+          fieldLabel: "Email",
+          name: "email",
+        },
+        {
+          xtype: "passwordfield",
+          fieldLabel: "Password",
+          name: "password",
+        },
+        {
+          xtype: "checkboxfield",
+          boxLabel: "Remember Me",
+          name: "rememberMe",
+        },
+      ],
+    },
+    {
+      xtype: "button",
+      text: "Login",
+      handler: "onLoginClick",
+    },
+    {
+      xtype: "button",
+      text: "Register",
+      handler: "onRegisterClick",
+    },
     {
       xtype: "button",
       text: "Sign in with Google",
-      cls: "google-sign-in",  
-      handler: "onGoogleSignInClick",
-      style: {
-        backgroundColor: "#ffffff",  
-        color: "#000000", 
-        padding: "10px 20px",
-        borderRadius: "5px",
-        border: "1px solid #ddd",
-        cursor: "pointer",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      },
-      iconCls: "fa fa-home",  
+      cls: "google-sign-in",
+      iconCls: "custom-google-icon",
       iconAlign: "left",
+      handler: "onGoogleSignInClick",
     },
-  ],
+  ]
 });
