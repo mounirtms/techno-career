@@ -24,6 +24,13 @@ Ext.define('Techno.view.main.Main', {
             iconCls: 'x-fa fa-home',
             layout: 'fit',
             items: {xtype: 'mainlist'}
+        },
+        {
+            title: 'Settings',
+            iconCls: 'x-fa fa-cog',
+            bind: {
+
+            }
         }
     ],
 

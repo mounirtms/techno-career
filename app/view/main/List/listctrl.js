@@ -2,6 +2,15 @@ Ext.define("Techno.view.main.ListController", {
     extend: "Ext.app.ViewController",
     alias: "controller.listctrl",
 
+
+    init:function(){
+        fetch('resources/provinces.json')
+        .then(res => res.json())
+        .then(data => {
+            Ext.Provinces = data;
+        });
+    },
+
     loadGrid: function(grid) {
 
         let store = grid.getViewModel().getStore('dataStore');
@@ -28,8 +37,12 @@ Ext.define("Techno.view.main.ListController", {
             newRecord = {
                 id: store.getCount() + 1,
                 email: '',
-                name: '',
-                phone: ''
+                firstname: '',
+                lastname: '',
+                phone: '',
+                province:'',
+                commune:'',
+                position:''
             };
 
         grid.setSelection(store.add(newRecord)[0]);

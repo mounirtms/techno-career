@@ -6,6 +6,8 @@ Ext.define('Techno.view.main.ListGrid', {
     xtype: 'mainlist',
     controller: 'listctrl',
 
+    requires:['Techno.view.fields.ProvinceCombo'],
+
     header: false,
     plugins: {
         grideditable: {
@@ -44,8 +46,26 @@ Ext.define('Techno.view.main.ListGrid', {
     ],
     columns: [
         {
-            text: 'Name',
-            dataIndex: 'name',
+            text: 'First Name',
+            dataIndex: 'firstname',
+            width: 200,
+            editable: true,
+            cell: {
+                userCls: 'bold'
+            }
+        },
+        {
+            text: 'Last Name',
+            dataIndex: 'lastname',
+            width: 200,
+            editable: true,
+            cell: {
+                userCls: 'bold'
+            }
+        },
+        {
+            text: 'Position',
+            dataIndex: 'position',
             width: 100,
             editable: true,
             cell: {
@@ -63,7 +83,34 @@ Ext.define('Techno.view.main.ListGrid', {
             dataIndex: 'phone',
             editable: true,
             width: 150
-        }
+        },
+        {
+            text: 'Province',
+            dataIndex: 'province',
+            editable: true,
+            editor: {
+                xtype: 'provincecombo'
+            },
+            width: 150
+        },
+        {
+            text: 'Daira',
+            dataIndex: 'daira',
+            editable: true,
+            editor: {
+                xtype: 'subprovincecombo'
+            },
+            width: 150
+        },
+        {
+            text: 'Commune',
+            dataIndex: 'commune',
+            editable: true,
+            editor: {
+                xtype: 'communecombo'
+            },
+            width: 150
+        },
     ],
     listeners: {
         initialize: 'loadGrid'

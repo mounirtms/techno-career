@@ -48,7 +48,6 @@ Ext.define('Techno.view.overrides.Editable', {
     },
 
     onTrigger: function(grid, isEdit) {
-        debugger
         let me = this,
             record = grid.getSelection(),
             formConfig = me.getFormConfig(),
