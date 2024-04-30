@@ -38,7 +38,6 @@ Ext.define("Techno.controller.login", {
   onRegisterClick: function () {
     var form = this.view.down("formpanel"); // Reference the form within the window
     var values = form.getValues(); // Get form values (NIE, email, password)
-    debugger;
 
     firebase
       .auth()

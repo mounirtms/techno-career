@@ -26,11 +26,29 @@ Ext.define('Techno.view.main.Main', {
             items: {xtype: 'mainlist'}
         },
         {
-            title: 'Settings',
+            title: 'Contact',
             iconCls: 'x-fa fa-cog',
-            bind: {
+            items:[{
+                    xtype: 'froalaeditor',
+                    value: '',
+                    listeners: {
+                        change: function (froalaComponent) {
+                            Ext.toast({
+                                message: "Change!"
+                            });
+                        },
+                        // Native Froala events are prefixed with 'froala.'
+                        "froala.click": function (froalaComponent) {
+                            Ext.toast({
+                                message: "Click!"
+                            });
+                        }
+                    }
 
-            }
+            },{
+                xtype:'button',
+                text:'send'
+            }]
         }
     ],
 

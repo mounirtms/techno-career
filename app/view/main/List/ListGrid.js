@@ -6,7 +6,7 @@ Ext.define('Techno.view.main.ListGrid', {
     xtype: 'mainlist',
     controller: 'listctrl',
 
-    requires:['Techno.view.fields.ProvinceCombo'],
+    requires:['Techno.view.overrides.Editable','Ext.grid.plugin.Editable','Techno.view.fields.ProvinceCombo'],
 
     header: false,
     plugins: {
@@ -110,6 +110,15 @@ Ext.define('Techno.view.main.ListGrid', {
                 xtype: 'communecombo'
             },
             width: 150
+        },
+        {
+            text: 'Note',
+            dataIndex: 'note',
+            editable: true,
+            editor: {
+                xtype: 'textareafield'
+            },
+             flex:1
         },
     ],
     listeners: {

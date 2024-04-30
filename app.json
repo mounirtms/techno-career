@@ -17,9 +17,12 @@
      */
     "requires": [
         "font-awesome",
+        "froala-editor",
         "google"
     ],
-
+    "froala": {
+        "activation-key": "my-activation-key"
+    },
     /**
      * The relative path to the application's markup file (html, jsp, asp, etc.).
      */
