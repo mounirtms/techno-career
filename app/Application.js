@@ -6,7 +6,6 @@
 Ext.define('Techno.Application', {
     extend: 'Ext.app.Application',
 
-    name: 'Techno',
  
     quickTips: false,
     platformConfig: {

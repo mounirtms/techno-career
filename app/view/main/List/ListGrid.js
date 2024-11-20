@@ -2,48 +2,24 @@
  * This view is an example list of people.
  */
 Ext.define('Techno.view.main.ListGrid', {
-    extend: 'Ext.grid.Grid',
+    extend: 'Techno.view.components.Grid',
     xtype: 'mainlist',
     controller: 'listctrl',
 
-    requires:['Techno.view.fields.ProvinceCombo'],
+    requires: ['Techno.view.fields.ProvinceCombo'],
 
     header: false,
-    plugins: {
-        grideditable: {
-            enableDeleteButton: true, // Optionally enable delete button
-        }
-    },
+    canAdd: true,
     path: 'users',
     viewModel: {
         type: 'listvm'
     },
+    storeName:'dataStore',
 
     bind: {
         store: '{dataStore}'
     },
-    items: [
-        {
-            xtype: 'toolbar',
-            docked: 'top',
-            items: [
-                {
-                    iconCls: 'x-fa fa-sync',
-                    handler:'loadData'
-                },
-                {
-                    text: 'Add New',
-                    iconCls: 'x-fa fa-plus',
-                    handler:'addNew'
-                },
-                {
-                    xtype: 'textfield',
-                    width: 150,
-                    placeholder: 'Search'
-                }
-            ]
-        }
-    ],
+
     columns: [
         {
             text: 'First Name',
@@ -111,8 +87,5 @@ Ext.define('Techno.view.main.ListGrid', {
             },
             width: 150
         },
-    ],
-    listeners: {
-        initialize: 'loadGrid'
-    }
+    ]
 });

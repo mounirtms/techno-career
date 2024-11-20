@@ -1,0 +1,99 @@
+// Card Styles
+.card-panel {
+    background-color: #f4f4f9;  // Light background color for the card
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+  
+    &:hover {
+      transform: translateY(-10px);  // Hover effect to raise the card
+      box-shadow: 0 12px 24px rgba(185, 31, 31, 0.2);
+    }
+  
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .card-icon-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;  // Space between number and label
+    }
+  
+    .number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;  // Large font size for number
+      font-weight: bold;
+      color: #3498db;  // Accent color
+  
+      .icon {
+        font-size: 36px;  // Icon size
+        margin-right: 10px;
+        color: #2980b9;  // Icon color
+      }
+  
+      .number-value {
+        font-size: 48px;  // Large size for the number
+        color: #2c3e50;  // Dark text color for the number
+      }
+    }
+  
+    .card-label {
+      font-size: 16px;
+      color: #7f8c8d;  // Light text color for the label
+      font-weight: normal;
+    }
+  }
+  
+  // Responsive Layout
+  @media screen and (max-width: 768px) {
+    .card-panel {
+      flex: 1 1 48%;  // Two-column layout for tablets
+      width: calc(50% - 20px);
+    }
+  
+    .number {
+      font-size: 36px;  // Adjust font size on tablet
+      .icon {
+        font-size: 30px;  // Adjust icon size
+      }
+      .number-value {
+        font-size: 36px;  // Adjust number size
+      }
+    }
+  
+    .card-label .label-text {
+      font-size: 14px;
+    }
+  }
+  
+  // Mobile Styles
+  @media screen and (max-width: 480px) {
+    .card-panel {
+      width: 100%;
+      margin: 10px 0;
+    }
+  
+    .number {
+      font-size: 32px;  // Smaller number on mobile
+      .icon {
+        font-size: 28px;  // Smaller icon on mobile
+      }
+      .number-value {
+        font-size: 32px;  // Smaller number on mobile
+      }
+    }
+  
+    .card-label .label-text {
+      font-size: 12px;  // Smaller label text on mobile
+    }
+  }

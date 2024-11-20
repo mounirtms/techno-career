@@ -8,7 +8,7 @@ Ext.define("Techno.view.main.MainController", {
 
 
     successLogin:function(){
-      debugger
+  
     },
 
     onLogoutClick: function () {
