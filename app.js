@@ -15,4 +15,5 @@ Ext.application({
 
   // The name of the initial view to create.
   mainView: 'Techno.view.main.MainPort',
+  controller:'main'
 });

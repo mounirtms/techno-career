@@ -7,10 +7,11 @@ Ext.define('Techno.view.main.MainModel', {
     alias: 'viewmodel.main',
 
     data: {
+        running:false,  // remove this 
         name: 'Techno',
         isLoggedIn:false,
+        cardTitle:'Dashboard',
         config: {},
         translations: {}
-    },
-
+    }
 });

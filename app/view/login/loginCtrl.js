@@ -2,6 +2,8 @@ Ext.define("Techno.controller.login", {
   extend: "Techno.view.main.MainController",
   alias: "controller.login",
 
+ 
+
   onGoogleSignInClick: function () {
     var provider = new firebase.auth.GoogleAuthProvider();
 
@@ -23,16 +25,52 @@ Ext.define("Techno.controller.login", {
   onLoginClick: function () {
     var form = this.view.down("formpanel");
     var values = form.getValues();
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(values.email, values.password)
-      .then((userCredential) => {
-        this.successLogin();
-        this.view.close();
+
+    debugger
+    fetch(Ext.magentoApiUrl + '/integration/admin/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: values.email,
+        password: values.password,
       })
-      .catch((error) => {
-        this.showError(error);
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Login failed');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Successfully logged in, save token to local storage
+        localStorage.setItem('magento_token', data);
+        document.getElementById('login-popup').style.display = 'none'; // Hide login popup
+        Toast.showToast("Login Successful!", "success");
+      })
+      .catch(error => {
+        // Show error toast
+        Toast.showToast("Error: " + error.message, "error");
+      })
+      .finally(() => {
+
+
       });
+
+
+    /*
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(values.email, values.password)
+          .then((userCredential) => {
+            this.successLogin();
+            this.view.close();
+          })
+          .catch((error) => {
+            this.showError(error);
+          });
+          */
   },
 
   onRegisterClick: function () {

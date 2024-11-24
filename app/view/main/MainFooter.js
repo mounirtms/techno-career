@@ -1,19 +1,15 @@
 Ext.define("Techno.view.main.MainFooter", {
-  extend: 'Ext.panel.Panel',
+  extend: 'Ext.Toolbar',
   xtype: 'mainfooter',
-  height: 36,
-  ui: 'footer',
-
+  height: 26,
+ 
+  ui: 'footer', 
   items: [
-    { xtype: 'component', html: '© 2024 My Application' },
+    { xtype: 'component', html: '© 2024 Techno Stationary' },
+    '->',
     {
-      xtype: 'button',
-      text: '☰', // You can use an icon for the menu toggle button
-      cls: 'menu-toggle-button',
-      handler: function() {
-          var menu = Ext.ComponentQuery.query('panel[cls=side-menu]')[0];
-          menu.setHidden(!menu.isHidden());
-      }
-  }
+      xtype: 'component',
+      html: '1.0.0', // You can use an icon for the menu toggle button
+    }
   ]
 });

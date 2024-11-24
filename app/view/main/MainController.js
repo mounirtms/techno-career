@@ -3,38 +3,47 @@
  * the "controller" of the Main view class.
  */
 Ext.define("Techno.view.main.MainController", {
-    extend: "Ext.app.ViewController",
-    alias: "controller.main",
+  extend: "Ext.app.ViewController",
+  alias: "controller.main",
 
+  toggleMenuMode: function () {
+    let treelist = this.view.up().down('treelist'),
+      treePanel = treelist.up().up(),
+      mainLogo = treePanel.items.items[0],
+      isMicro = treelist.getMicro();
 
-    successLogin:function(){
+    if (!isMicro) {
+      treePanel.setWidth(64)
+      mainLogo.setHtml('<img src="resources/imgs/techno.png" width="64" alt="Logo">')
+      treelist.setMicro(true);
+
+    } else {
+      treePanel.setWidth(240)
+      mainLogo.setHtml('<img src="resources/imgs/logo_techno.png" width="220" alt="Logo">')
+      treelist.setMicro(false);
+
+    }
+  },
   
-    },
+  successLogin: function () {
 
-    onLogoutClick: function () {
-      let me = this;
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          me.getViewModel().set("isLoggedIn", false);
-        })
-        .catch((error) => {
-          me.showError(error);
-        });
-    },
-  
-    showError: function (message) {
-      Ext.toast({
-        title: "Error",
-        message: "<pre>" + message + "</pre>",
-        align: "t",
-        toastType: "error", // Set toast type to 'error'
-        closable: true,
-        slideIn: true,
-        slideOut: true,
-        timeout: 5000,
+  },
+
+  onLogoutClick: function () {
+    let me = this;
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        Toast.showSuccess('Logged In ');
+        me.getViewModel().set("isLoggedIn", false);
+      })
+      .catch((error) => {
+        Toast.showError(error);
       });
-    },
-  });
-   
+  },
+
+  openSettingsWindow: function () {
+    Ext.create('Techno.view.main.SettingsWindow').show();
+  }
+});
