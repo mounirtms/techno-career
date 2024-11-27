@@ -252,7 +252,7 @@ Ext.define('ProductsTable', {
 Ext.define('InvoiceTable', {
     extend: 'Techno.view.components.Grid',
     xtype: 'invoicetable',
-    localData: 'invoice',
+    localData: 'invoices',
     text: 'Invoice List',
 
 

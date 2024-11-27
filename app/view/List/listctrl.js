@@ -93,7 +93,7 @@ Ext.define("Techno.view.main.ListController", {
 
 
     doListSettings: function (btn) {
-        debugger
+        
     },
 
     doExport: function (btn) {

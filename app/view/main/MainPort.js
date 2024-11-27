@@ -5,7 +5,11 @@ Ext.define('Techno.view.main.MainPort', {
   layout: 'vbox',
   controller: 'main',
 
-  requires: ['Ext.grid.Tree'],
+  requires: [
+    'Ext.grid.Tree',
+    'Ext.Responsive',
+    'Ext.util.*'
+  ],
 
   viewModel: {
     type: 'main'
@@ -45,7 +49,7 @@ Ext.define('Techno.view.main.MainPort', {
       let me = this,
         vm = me.getViewModel();
       Ext.runningSession = vm.get('running');
-   
+
       if (!Techno.magentoAccessToken) {
         vm.set('running', 1);
         firebase.auth().onAuthStateChanged((user) => {
@@ -53,7 +57,7 @@ Ext.define('Techno.view.main.MainPort', {
             vm.set('isLoggedIn', true);
           }
           else {
-             Ext.create('Techno.view.Login').show();
+            Ext.create('Techno.view.Login').show();
           }
         });
       }

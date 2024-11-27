@@ -1,7 +1,8 @@
 Ext.define('Techno.view.components.Grid', {
     extend: 'Ext.grid.Grid',
     requires: [
-        'Ext.grid.filters.*'
+        'Ext.grid.filters.*',
+        'Ext.grid.plugin.*'
     ],
 
     store: {
@@ -175,7 +176,7 @@ Ext.define('Techno.view.components.Grid', {
 
             {
                 iconCls: 'x-fa fa-caret-square-down',
-                handler: 'collapseGrid'
+               //handler: 'collapseGrid'
             }
 
         ];
