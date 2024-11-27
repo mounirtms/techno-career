@@ -1,0 +1,67 @@
+/* CSS for Statuses in Table */
+.status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    width: max-content;
+    text-align: right;
+    color: #fff;
+    white-space: wrap; 
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* Different status styles */
+.status.inProgress {
+    background-color: #FF9800;
+    /* Orange for in progress */
+}
+
+.status.pending {
+    background-color: #FF5722;
+    /* Red for pending */
+}
+
+.status.delivered {
+    background-color: #4CAF50;
+    /* Green for delivered */
+}
+
+.status.canceled {
+    background-color: #9E9E9E;
+    /* Gray for canceled */
+}
+
+.status.closed {
+    background-color: #3F51B5;
+    /* Blue for closed */
+}
+
+.status.fraud {
+    background-color: #F44336;
+    /* Red for fraud */
+}
+
+.status.unknown {
+    background-color: #9E9E9E;
+    /* Gray for unknown status */
+}
+
+.status.confirmationPending {
+    background-color: #3bffc4;
+    /* Yellow for pending confirmation */
+}
+
+.status.deliveryInProgress {
+    background-color: #FFC107;
+    /* Amber for delivery in progress */
+}
+
+.status.deliveryConfirmed {
+    background-color: #009688;
+    /* Teal for delivery confirmed */
+}
+
+.status.orderCompleted {
+    background-color: #4CAF50;
+    /* Green for completed orders */
+}

@@ -103,7 +103,11 @@
 Ext.define('Ext.drag.Target', {
     extend: 'Ext.drag.Item',
 
-    requires: ['Ext.drag.Manager'],
+    requires: [
+        'Ext.drag.Manager',
+        'Ext.drag.Source',
+        'Ext.drag.proxy.Placeholder'
+    ],
 
     defaultIdPrefix: 'target-',
 

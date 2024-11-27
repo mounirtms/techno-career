@@ -2,58 +2,71 @@
 Ext.define('Techno.view.main.DashCards', {
     extend: 'Ext.container.Container',
     xtype: 'dashboardcards',
+    viewModel: { type: 'main' },
     layout: {
         type: 'hbox',
         align: 'stretch',
         pack: 'start'
     },
     padding: 20,
-    layout: 'hbox',
+    layout: {
+        type: 'hbox',
+        align: 'stretch',
+        pack: 'start'
+    },
     items: [
         {
             xtype: 'card',
             data: {
                 icon: 'fa-dollar-sign',
-                value: '80',
-                label: 'Sales'
+                bind: {
+                    value: '{totalRevenue}' // Bind to totalRevenue in ViewModel
+                },
+                label: 'Revenue'
             }
         },
         {
             xtype: 'card',
             data: {
-                icon: 'fa-eye',
-                value: '1,504',
-                label: 'Daily Views'
+                icon: 'fa-tag',
+                bind: {
+                    value: '{totalProducts}' // Bind to totalProducts in ViewModel
+                },
+                label: 'Total Products'
             }
         },
         {
             xtype: 'card',
             data: {
-                icon: 'fa-comment',
-                value: '284',
-                label: 'Comments'
+                icon: 'fa-cart-plus',
+                bind: {
+                    value: '{totalOrders}' // Bind to totalOrders in ViewModel
+                },
+                label: 'Total Orders'
             }
         },
         {
             xtype: 'card',
             data: {
-                icon: 'fa-credit-card',
-                value: '$7,842',
-                label: 'Earnings'
+                icon: 'fa-address-book',
+                bind: {
+                    value: '{totalCustomers}' // Bind to totalCustomers in ViewModel
+                },
+                label: 'Customers'
             }
         }
     ],
     // Add responsive config for dynamic layouts based on screen size
     responsiveConfig: {
         // For large screens, show all cards in one row (using flex: 1)
-        'width > 800': {
+        'width > 900': {
             layout: { type: 'hbox', align: 'stretch' },
             defaults: { flex: 1 }  // Each card takes equal space in a row
         },
 
         // For smaller screens (e.g., tablets), show two cards per row
-        'width <= 800 && width > 500': {
-            layout: { type: 'hbox', align: 'stretch', pack: 'center' },
+        'width <= 900 && width > 500': {
+            layout: { type: 'vbox', align: 'stretch' },
             defaults: { flex: 1, width: '45%' }  // Cards take 45% of width for 2 cards per row
         },
 

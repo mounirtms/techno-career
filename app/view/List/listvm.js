@@ -7,7 +7,7 @@ Ext.define('Techno.view.main.ListViewModel', {
             type: 'store',
             //model: 'Techno.model.Item',  // Define a model if needed
 
-            
+            pageSize:10,
             proxy: {
                 type: 'memory',  // This will use memory-based proxy
             },

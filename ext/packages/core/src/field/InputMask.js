@@ -564,7 +564,7 @@ Ext.define('Ext.field.InputMask', function(InputMask) { return { // eslint-disab
             }
         }
 
-        if (s !== value) {
+        if (s !== value && !field.readOnly) {//@HOTDEV
             field.maskProcessed = true;
             field.setValue(s);
         }

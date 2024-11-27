@@ -1110,7 +1110,7 @@ Ext.define('Ext.event.Event', {
             return false;
         }
 
-        return Ext.fly(el).contains(t);
+        return Ext.fly(el) && Ext.fly(el).contains(t);
     },
 
     privates: {

@@ -827,8 +827,7 @@ Ext.Configurator.prototype = {
                 if (strict) {
                     if ((typeof prop === 'function') && !prop.$nullFn) {
                         //<debug>
-                        Ext.Error.raise("Cannot override method " + name + " on " +
-                                        instance.$className + " instance.");
+                        Ext.Error.raise("Cannot override method " + name + " on " + instance.$className + " instance.");
                         //</debug>
 
                         continue;
@@ -836,8 +835,7 @@ Ext.Configurator.prototype = {
                     //<debug>
                     else {
                         if (name !== 'type') {
-                            Ext.log.warn('No such config "' + name + '" for class ' +
-                                instance.$className);
+                            Ext.log.warn('No such config "' + name + '" for class ' + instance.$className);
                         }
                     }
                     //</debug>

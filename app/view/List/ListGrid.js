@@ -5,16 +5,14 @@ Ext.define('Techno.view.main.ListGrid', {
     extend: 'Techno.view.components.Grid',
     xtype: 'mainlist',
 
-    requires: ['Techno.view.fields.ProvinceCombo'],
+    requires: ['Techno.view.fields.ProvinceCombo'], 
 
-    config: {
-        canAdd: true
-    },
+    canAdd: true,
+
     path: 'users',
 
 
     getGridCols: function () {
-
         return [
             {
                 text: 'First Name',

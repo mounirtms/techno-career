@@ -1686,7 +1686,7 @@ var noArgs = [],
                         // Attempt to return the instantiated property on this instance first.
                         // Only return the config object if it has not yet been pulled through
                         // the applier into the instance.
-                        ret = me.hasOwnProperty(propName) ? me[propName] : me.config[name];
+                        ret = me.hasOwnProperty(propName) ? me[propName] : me.config && me.config[name]; //#HOTECHDEV
                     }
                     else {
                         ret = me[cfg.names.get]();
@@ -1797,8 +1797,7 @@ var noArgs = [],
 
                             if ((typeof prop === 'function') && !prop.$nullFn) {
                                 //<debug>
-                                Ext.Error.raise("Cannot override method " + name + " on " +
-                                                me.$className + " instance.");
+                                Ext.Error.raise("Cannot override method " + name + " on " + me.$className + " instance.");
                                 //</debug>
 
                                 return me;
@@ -1806,8 +1805,7 @@ var noArgs = [],
                             //<debug>
                             else {
                                 if (name !== 'type') {
-                                    Ext.log.warn('No such config "' + name + '" for class ' +
-                                        me.$className);
+                                    Ext.log.warn('No such config "' + name + '" for class ' + me.$className);
                                 }
                             }
                             //</debug>

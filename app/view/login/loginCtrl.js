@@ -2,7 +2,7 @@ Ext.define("Techno.controller.login", {
   extend: "Techno.view.main.MainController",
   alias: "controller.login",
 
- 
+
 
   onGoogleSignInClick: function () {
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -23,11 +23,11 @@ Ext.define("Techno.controller.login", {
   },
 
   onLoginClick: function () {
-    var form = this.view.down("formpanel");
-    var values = form.getValues();
+    let wind = this.getView(),
+      form = wind.down("formpanel"),
+      values = form.getValues();
 
-    debugger
-    fetch(Ext.magentoApiUrl + '/integration/admin/token', {
+    fetch(Techno.magentoApiUrl + '/integration/admin/token', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -45,17 +45,15 @@ Ext.define("Techno.controller.login", {
       })
       .then(data => {
         // Successfully logged in, save token to local storage
-        localStorage.setItem('magento_token', data);
-        document.getElementById('login-popup').style.display = 'none'; // Hide login popup
+        localStorage.setItem('magentoAccessToken', data);
         Toast.showToast("Login Successful!", "success");
       })
       .catch(error => {
         // Show error toast
-        Toast.showToast("Error: " + error.message, "error");
+        Toast.showError("Error: " + error.message);
       })
       .finally(() => {
-
-
+        wind.close();
       });
 
 

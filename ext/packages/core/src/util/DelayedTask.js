@@ -50,7 +50,7 @@ Ext.util.DelayedTask = function(fn, scope, args, cancelOnDelay, fireIdleEvent) {
         call = function() {
             me.id = null;
 
-            if (!(scope && scope.destroyed)) {
+            if (fn && !(scope && scope.destroyed)){
                 if (args) {
                     fn.apply(scope, args);
                 }

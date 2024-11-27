@@ -86,26 +86,22 @@ Ext.define('Ext.chart.CartesianChart', {
         if (!Ext.isObject(padding)) {
             return Ext.util.Format.parseBox(padding);
         }
-        else if (!oldPadding) {
+
+        if (!oldPadding) {
             return padding;
         }
-        else {
-            return Ext.apply(oldPadding, padding);
-        }
+
+        return Ext.apply(oldPadding, padding);
     },
 
     getDirectionForAxis: function(position) {
-        var flipXY = this.getFlipXY(),
-            direction;
+        var flipXY = this.getFlipXY();
 
         if (position === 'left' || position === 'right') {
-            direction = flipXY ? 'X' : 'Y';
-        }
-        else {
-            direction = flipXY ? 'Y' : 'X';
+            return flipXY ? 'X' : 'Y';
         }
 
-        return direction;
+        return flipXY ? 'Y' : 'X';
     },
 
     /**

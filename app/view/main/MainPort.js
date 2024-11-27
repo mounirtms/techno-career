@@ -5,6 +5,8 @@ Ext.define('Techno.view.main.MainPort', {
   layout: 'vbox',
   controller: 'main',
 
+  requires: ['Ext.grid.Tree'],
+
   viewModel: {
     type: 'main'
   },
@@ -43,18 +45,15 @@ Ext.define('Techno.view.main.MainPort', {
       let me = this,
         vm = me.getViewModel();
       Ext.runningSession = vm.get('running');
-      Ext.magentoApiUrl = localStorage.getItem('magentoApiUrl');
-      Ext.magentoAccessToken = localStorage.getItem('magentoAccessToken');
-      Ext.cegidApiUrl = localStorage.getItem('cegidApiUrl');
-      Ext.cegidAccessToken = localStorage.getItem('cegidAccessToken');
-      if (!Ext.runningSession) {
+   
+      if (!Techno.magentoAccessToken) {
         vm.set('running', 1);
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
             vm.set('isLoggedIn', true);
           }
           else {
-            Ext.create('Techno.view.Login').show();
+             Ext.create('Techno.view.Login').show();
           }
         });
       }

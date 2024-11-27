@@ -22,7 +22,6 @@ Ext.define('Techno.util.Toast', {
                 break;
             case 'error':
                 toast = Ext.create('Techno.view.components.Toast.Error', options)
-
                 break;
             case 'info':
                 toast = Ext.create('Techno.view.components.Toast.Info', options)

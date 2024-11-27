@@ -17,7 +17,7 @@ Ext.define('Techno.view.components.Toast', {
     listeners: {
         beforeshow: function (sender, eOps) {
             setTimeout(function () {
-                sender.hide();
+                sender.destroy();
             }, sender._timeout);
         }
     }

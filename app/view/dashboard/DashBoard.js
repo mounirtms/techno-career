@@ -1,22 +1,34 @@
 Ext.define("Techno.view.main.Dashboard", {
     extend: 'Ext.container.Container',
-    layout: 'vbox',
+
     xtype: 'dashbordview',
     title: 'Dashboard',
     closable: false,
     iconCls: 'x-fa fa-home',
+
+    layout: 'auto',
     scrollable: true,
+    scrollable: 'y', // Scroll vertically if the content exceeds the height
+
+    height: '100vh', // Ensure the container fills the viewport height
+
 
     items: [
         { xtype: 'dashboardcards' },
         {
-            xtype: 'container',
-            layout: { type: 'hbox', align: 'stretch' },
-            margin: 20,
+            xtype: 'dashgridpanel',
             items: [
-              { xtype: 'orderstable', flex: 1, margin: 10 },
-               { xtype: 'customerstable', flex: 1, margin: 10 }
+                { items: { xtype: 'orderstable', flex: 1, } },
+                { items: { xtype: 'productstable', flex: 1, } },
             ]
-        }
+        },
+        {
+            xtype: 'dashgridpanel',
+            items: [
+                { items: { xtype: 'customerstable', flex: 1, } },
+                { items: { xtype: 'invoicetable', flex: 1, } },
+            ]
+        },
+
     ]
 });

@@ -202,7 +202,7 @@ Ext.define('Ext.util.CSS', function() {
         },
 
         /**
-         * Gets an an individual CSS rule by selector(s)
+         * Gets an individual CSS rule by selector(s)
          * @param {String/String[]} selector The CSS selector or an array of selectors to try.
          * The first selector that is found is returned.
          * @param {Boolean} refreshCache true to refresh the internal cache if you have recently

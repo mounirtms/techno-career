@@ -45,5 +45,6 @@ Ext.define("Techno.view.main.MainController", {
 
   openSettingsWindow: function () {
     Ext.create('Techno.view.main.SettingsWindow').show();
-  }
+  },
+ 
 });

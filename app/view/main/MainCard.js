@@ -1,7 +1,7 @@
 Ext.define("Techno.view.main.MainCard", {
     extend: 'Ext.Panel',
     xtype: 'maincontent',
-    maxHeight: window.innerHeight - 80,
+   
     tbar: [{
         text: '☰',
         handler: 'toggleMenuMode'
@@ -16,11 +16,12 @@ Ext.define("Techno.view.main.MainCard", {
     },
     {
         xtype: 'button',
-        iconCls: 'x-fa fa-cogs',
+        iconCls: 'x-fa fa-cog',
         handler: 'openSettingsWindow'
     }
     ],
     items: [{
+        
         xtype: 'dashbordview'
     }]
 });

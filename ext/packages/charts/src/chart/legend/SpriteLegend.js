@@ -169,6 +169,10 @@ Ext.define('Ext.chart.legend.SpriteLegend', {
         return xtype === 'sprite';
     },
 
+    getItemId: function(){
+        return this.getId();
+    },
+
     applyStore: function(store) {
         return store && Ext.StoreManager.lookup(store);
     },
@@ -735,7 +739,10 @@ Ext.define('Ext.chart.legend.SpriteLegend', {
             series = chart.get(data.series),
             marker, label, markerConfig;
 
-        if (sprite) {
+        if (series === undefined){
+            return;
+        }
+        if (sprite){
             label = sprite.getLabel();
             label.setAttributes({
                 text: data.name

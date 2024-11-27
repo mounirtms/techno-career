@@ -251,10 +251,10 @@ var me = this,
      * @param {Object} o The variable to encode.
      * @return {String} The JSON string.
      */
-    me.encode = function(o) {
+    me.encode = function(o, f, s) {
         // check USE_NATIVE_JSON here so it can be changed if needed
         if (hasNative && Ext.USE_NATIVE_JSON) {
-            return JSON.stringify(o);
+            return JSON.stringify(o, f, s);
         }
 
         return me.encodeValue(o);

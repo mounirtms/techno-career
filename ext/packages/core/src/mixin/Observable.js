@@ -713,7 +713,8 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
 
             // Only continue firing the event if there are listeners to be informed.
             // Bubbled events will always have a listener count, so will be fired.
-            if (me.hasListeners[eventName]) {
+            // HOTECHDEV
+            if (me.hasListeners && me.hasListeners[eventName]) {
                 ret = me.doFireEvent(eventName, args || emptyArray, event ? event.bubble : false);
             }
 
@@ -1893,7 +1894,7 @@ Ext.define('Ext.mixin.Observable', function(Observable) {
                         // If a new listener has been added (Event.addListener rejects
                         // duplicates of the same fn+scope)
                         // then increment the hasListeners counter
-                        me.hasListeners._incr_(ename);
+                        me.hasListeners && me.hasListeners._incr_(ename); // HOTECHDEV
                         ret = true;
                     }
                 }

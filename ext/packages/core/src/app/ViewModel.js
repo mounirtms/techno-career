@@ -1264,7 +1264,7 @@ Ext.define('Ext.app.ViewModel', {
      * @return {Object} The data stored at the passed path.
      */
     get: function(path) {
-        return this.getStub(path).getValue();
+        return this.getStub(path) && this.getStub(path).getValue();
     },
 
     /**
@@ -1448,7 +1448,7 @@ Ext.define('Ext.app.ViewModel', {
         getStub: function(bindDescr) {
             var root = this.getRoot();
 
-            return bindDescr ? root.getChild(bindDescr) : root;
+            return bindDescr ? root && root.getChild(bindDescr) : root;
         },
 
         collect: function() {

@@ -346,7 +346,7 @@ Ext.define('Ext.data.LocalStore', {
      * @return {Number} The index of the passed Record. Returns -1 if not found.
      */
     indexOf: function(record) {
-        return this.getData().indexOf(record);
+        return this.getData() && this.getData().indexOf(record);
     },
 
     /**

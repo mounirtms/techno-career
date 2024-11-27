@@ -14,10 +14,13 @@ Ext.define('Ext.mixin.Queryable', {
      * @param {String} [selector] Selector complying to an Ext.ComponentQuery selector.
      * If no selector is specified all items will be returned.
      * @return {Ext.Component[]} Components which matched the selector
+     * @HOTDEV root element need to be checked .https://youtu.be/f0FuDelPIjE
      */
     query: function(selector) {
         selector = selector || '*';
-
+        if (this.destroyed) {
+            return null;
+        }
         return Ext.ComponentQuery.query(selector, this.getQueryRoot());
     },
 

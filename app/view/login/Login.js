@@ -5,8 +5,8 @@ Ext.define("Techno.view.Login", {
   viewModel: "main", // ViewModel to bind data if needed
   modal: true,
   closable: false, // Prevent closing by default
-  width: 400,
-  height: 500,
+
+
 
   layout: {
     type: "vbox",
@@ -20,7 +20,7 @@ Ext.define("Techno.view.Login", {
       xtype: "image",
       width: 350,
       height: 80,
-      margin:20,
+      margin: 20,
       src: "resources/imgs/logo_techno.png", // Placeholder for logo image
     },
 
@@ -61,33 +61,24 @@ Ext.define("Techno.view.Login", {
       handler: "onLoginClick", // Action to trigger on login
       scale: "large", // Larger button
       width: "100%",
- 
+
       iconCls: "x-fa fa-sign-in", // Font Awesome login icon
       iconAlign: "left",
-      ui: 'action' 
+      ui: 'action'
     },
 
-    // Register button
-    {
-      xtype: "button",
-      text: "Register",
-      ui: 'action',
-      handler: "onRegisterClick", // Action to trigger on register
-      width: "100%",
-      margin: "10 0",
-    
-    },
+
 
     // Google Sign-in button
-    {
+    /*{
       xtype: "button",
       text: "Sign in with Google",
-     
+      margin: "10 0",
       iconCls: "x-fa fa-google", // Font Awesome Google icon
        handler: "onGoogleSignInClick", // Action to trigger on Google sign-in
       ui: 'action', 
       width: "100%",
-    },
+    },*/
   ],
 
   // Listener to automatically focus on the email field when the window is shown

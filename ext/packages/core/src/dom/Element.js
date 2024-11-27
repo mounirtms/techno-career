@@ -3561,7 +3561,7 @@ Ext.define('Ext.dom.Element', function(Element) {
             // rounded up. See
             // https://bugzilla.mozilla.org/show_bug.cgi?id=458617
             // Rounding up ensures that the width includes the full width of the text contents.
-            if (Ext.supports.BoundingClientRect) {
+            if (dom && Ext.supports.BoundingClientRect) {
                 rect = dom.getBoundingClientRect();
                 width = (me.vertical && !Ext.supports.RotatedBoundingClientRect)
                     ? (rect.bottom - rect.top)
@@ -3570,7 +3570,7 @@ Ext.define('Ext.dom.Element', function(Element) {
                 width = preciseWidth ? width : Math.ceil(width);
             }
             else {
-                width = dom.offsetWidth;
+                width = dom && dom.offsetWidth;
             }
 
             // IE9/10 Direct2D dimension rounding bug: https://sencha.jira.com/browse/EXTJSIV-603
@@ -4381,7 +4381,7 @@ Ext.define('Ext.dom.Element', function(Element) {
 
             asDom = (asDom !== false);
 
-            selector = selector.split(",");
+            selector = selector ? selector.split(',') : []; //@HOTDEV split error coming from here .
 
             if (!single) {
                 // only allocate the results array if the full result set is being
@@ -6704,7 +6704,7 @@ Ext.define('Ext.dom.Element', function(Element) {
                 // saveTabbableState must disable tabbability for the whole document.
                 // But upon unmask, the View must not be restored to tabbability. It must only have
                 // its save level decremented.
-                // AbstractView#toggleChildrenTabbability however pases this as false so that
+                // AbstractView#toggleChildrenTabAbility however pases this as false so that
                 // it may be called upon row add and it does not increment save levels on already
                 // saved tabbables.
                 if (!options || options.includeSaved == null) {
