@@ -9,16 +9,16 @@ Ext.define('Techno.view.main.MenuVM', {
                 path;
 
             if (selection) {
-            
-           
-                return  
+
+
+                return
             }
             else {
                 return 'No node selected';
             }
             return 'No node selected'; // can be applied for history .. 
         }
-        
+
     },
 
     stores: {
@@ -32,7 +32,7 @@ Ext.define('Techno.view.main.MenuVM', {
                         text: 'Dashboard',
                         iconCls: 'x-fa fa-home',
                         leaf: true,
-                        selected:true,
+                        selected: true,
                         view: 'dashbordview',
                         badgeText: '3'  // Example badge
                     },
@@ -43,71 +43,61 @@ Ext.define('Techno.view.main.MenuVM', {
                         view: 'mainlist'
                     },
                     {
-                        text:'Catalog Tree',
-                        iconCls: 'x-fa fa-users',
-                        leaf: true,
-                        view: 'cataloglist'
-                    },
-                    {
-                        text: 'Stocks',
-                        iconCls: 'x-fa fa-hotel',
-                        leaf: true,
-                        badgeText: '5'
-                    },
-                    {
-                        text: 'Stores',
-                        iconCls: 'x-fa fa-warehouse',
-                        leaf: true,
-                        badgeText: '5'
-                    },
-                    {
-                        text: 'Products',
-                        iconCls: 'x-fa fa-cube',
-                      
+                        text: 'Sales',
+                        iconCls: 'x-fa  fa-hand-holding-usd', 
                         children: [
                             {
-                                text: 'Product List',
-                                iconCls: 'x-fa fa-list',
+                                text:'Orders List',
+                                iconCls: 'x-fa fa-luggage-cart',
                                 leaf: true,
-                                itemId: 'product-list',
-                                cls: 'menu-item',
-                                badgeText: '10'
+                                view:'orderstable'
                             },
                             {
-                                text: 'Cegid Product List',
-                                iconCls: 'x-fa fa-list',
+                                text:'Invoice List',
+                                iconCls: 'x-fa fa-file-invoice-dollar', 
                                 leaf: true,
-                                itemId: 'cegid-product-list',
-                                cls: 'menu-item'
-                            },
-                            {
-                                text: 'Product Categories',
-                                iconCls: 'x-fa fa-tags',
-                                leaf: true,
-                                itemId: 'product-categories',
-                                cls: 'menu-item'
+                                view:'invoicetable'
                             }
                         ]
                     },
                     {
+                        text: 'Inventory',
+                        iconCls: 'x-fa fa-store-alt',
+                        children: [
+                            {
+                                text: 'Catalog Tree',
+                                iconCls: 'x-fa fa-sitemap',
+                                leaf: true,
+                                view: 'cataloglist'
+                            },
+                            {
+                                text: 'Stores',
+                                iconCls: 'x-fa fa-warehouse',
+                                leaf: true, 
+                            },
+                            {
+                                text: 'Stocks',
+                                iconCls: 'x-fa fa-boxes',
+                                leaf: true, 
+                            },
+                        ]
+                    },
+
+
+                    {
                         text: 'Customers',
                         iconCls: 'x-fa fa-users',
-                       
                         children: [
                             {
                                 text: 'Customer List',
                                 iconCls: 'x-fa fa-list-ul',
                                 leaf: true,
-                                itemId: 'customer-list',
-                                cls: 'menu-item'
+                                view: 'customerstable'
                             },
                             {
                                 text: 'Customer Feedback',
                                 iconCls: 'x-fa fa-comments',
-                                leaf: true,
-                                itemId: 'customer-feedback',
-                                cls: 'menu-item',
-                                badgeText: '7'
+                                leaf: true, 
                             }
                         ]
                     }

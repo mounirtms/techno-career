@@ -47,6 +47,9 @@ Ext.define("Techno.controller.login", {
         // Successfully logged in, save token to local storage
         localStorage.setItem('magentoAccessToken', data);
         Toast.showToast("Login Successful!", "success");
+        setTimeout(function () {
+          localtion.reload();
+        }, 3000);
       })
       .catch(error => {
         // Show error toast

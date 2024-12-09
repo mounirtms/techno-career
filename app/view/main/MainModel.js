@@ -18,6 +18,10 @@ Ext.define('Techno.view.main.MainModel', {
         totalCustomers:0,
 
         config: {},
-        translations: {}
+        translations: {},
+
+        icon:'',
+        value:'',
+        label:''
     }
 });

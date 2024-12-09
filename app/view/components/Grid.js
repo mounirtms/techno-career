@@ -31,6 +31,9 @@ Ext.define('Techno.view.components.Grid', {
                         Toast.showWarning("Clear Cache and Storage !");
 
                     }, 5000)
+                    if(response.status==='401')
+                        localStorage.clear();
+                    localtion.reload();
                 }
             }
         },

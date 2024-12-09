@@ -1,7 +1,7 @@
 Ext.define('Techno.view.main.Card', {
     extend: 'Ext.Component',
     xtype: 'card',
-
+    viewModel: 'main',
     tpl: [
         '<div class="card-panel">',
         '<div class="card-content">',
